@@ -3,6 +3,8 @@
 Sherlock is a deep-learning approach to semantic data type detection, i.e. labeling tables with column types such as `name`, `address`, etc. This is helpful for, among others, data validation, processing and integration. This repository provides data and code to guide usage of Sherlock, retraining the model, and replication of results. Visit https://sherlock.media.mit.edu for more background on this project.
 
 ## Installation of package
+Create a virtual environment in python3.7 using `virtualenv --python="/usr/bin/python3.7" env`
+
 1. You can install Sherlock by cloning this repository, and run `pip install .`.
 2. Install dependencies using `pip install -r requirements.txt` (or `requirements38.txt` depending on your Python version).
 
