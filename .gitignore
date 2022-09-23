@@ -2,6 +2,8 @@
 domain_net/data/
 domain_net/graph_representations/
 domain_net/ground_truth/
+domain_net/output/
+domain_net/figures/
 
 
 # Byte-compiled / optimized / DLL files
