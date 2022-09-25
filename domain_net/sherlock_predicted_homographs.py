@@ -42,7 +42,9 @@ def main(args):
     graph = pickle.load(open(args.graph, 'rb'))
 
     # Find the semantic types for each column
-    column_node_to_semantic_type_dict = utils.sherlock_helpers.get_column_node_to_semantic_type_dict(data_dir=data_dir, model=model)
+    column_node_to_semantic_type_dict = utils.sherlock_helpers.get_column_node_to_semantic_type_dict(
+        data_dir=data_dir, model=model, input_data_file_type=args.input_data_file_type
+    )
     with open(args.output_dir + 'column_node_to_semantic_type_dict.pickle', 'wb') as handle:
         pickle.dump(column_node_to_semantic_type_dict, handle)
 
@@ -72,6 +74,11 @@ if __name__ == "__main__":
     # Input graph representation of the set of tables
     parser.add_argument('-g', '--graph', metavar='graph', required=True,
     help='Path to the Graph representation of the set of tables')
+
+    # File format of the input raw data (i.e. the tables). One of {csv, tsv}
+    parser.add_argument('-idft', '--input_data_file_type', choices=['csv', 'tsv'], default='csv',
+    metavar='input_data_file_type', required=True,
+    help='File format of the input raw data (i.e. the tables). One of {csv, tsv}')
 
     # Parse the arguments
     args = parser.parse_args()

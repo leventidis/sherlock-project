@@ -7,7 +7,7 @@ from sherlock.features.preprocessing import (
 )
 from .graph_helpers import get_attribute_of_instance
 
-def get_column_node_to_semantic_type_dict(data_dir, model):
+def get_column_node_to_semantic_type_dict(data_dir, model, input_data_file_type='csv'):
     '''
     Given a directory `data_dir` containing a list of csv (i.e., tables) files and the pre-trained Sherlock `model`
     predict the semantic type for each column node (i.e, for each column in each specified table)
@@ -16,7 +16,13 @@ def get_column_node_to_semantic_type_dict(data_dir, model):
     column_node_to_semantic_type_dict = {}
 
     for filename in tqdm(os.listdir(data_dir)):
-        df = pd.read_csv(data_dir+filename, keep_default_na=False, dtype=str)
+        if input_data_file_type=='csv':
+            df = pd.read_csv(data_dir+filename, keep_default_na=False, dtype=str)
+        elif input_data_file_type=='tsv':
+            df = pd.read_csv(data_dir+filename, keep_default_na=False, dtype=str, sep='\t')
+        else:
+            raise ValueError('input_data_file_type must be one of: csv or tsv')
+
         column_names=df.columns
         
         # Convert dataframe into a pandas series to be used as input for Sherlock
