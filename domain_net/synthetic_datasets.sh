@@ -8,7 +8,7 @@ output_dir=output/synthetic_benchmark/
 graph=graph_representations/synthetic_benchmark/bipartite.graph
 
 python sherlock_predicted_homographs.py \
---input_dir $input_dir --output_dir $output_dir --graph $graph
+--input_dir $input_dir --output_dir $output_dir --graph $graph --input_data_file_type csv
 
 
 #####----- Homograph prediction on the synthetic_benchmark_large -----#####
@@ -17,4 +17,4 @@ output_dir=output/synthetic_benchmark_large/
 graph=graph_representations/synthetic_benchmark_large/bipartite.graph
 
 python sherlock_predicted_homographs.py \
---input_dir $input_dir --output_dir $output_dir --graph $graph
+--input_dir $input_dir --output_dir $output_dir --graph $graph --input_data_file_type csv
